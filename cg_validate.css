@@ -12,4 +12,33 @@
 */
 
 
-/* Validation Styles */
+/*Validation Styles */
+
+/* When the input/select/textarea controls are clicked, the background of the control area will become yellow */
+input:focus,
+select:focus,
+textarea:focus {
+    background-color: rgb(245, 245, 140);
+}
+
+/* When the input controls are clicked and the information inside the form is valid, the background of the control area will become green with a green checkmark off to the side */
+input:focus,
+input#fnBox:focus,
+input#lnBox:focus:valid,
+input#addBox:focus:valid,
+input#mailBox:focus:valid,
+input#phoneBox:focus:valid,
+input#idBox:focus:valid {
+    background: rgb(220, 255, 220) url(cg_valid.png) right/contain no-repeat;
+
+}
+
+/* When the input controls are clicked and the information inside the form is invalid, the background of the control area will be yellow with a red triangle off to the side */
+input#fnBox:focus:invalid,
+input#lnBox:focus:invalid,
+input#addBox:focus:invalid,
+input#mailBox:focus:invalid,
+input#phoneBox:focus:invalid,
+input#idBox:focus:invalid {
+    background: rgb(245, 245, 140) url(cg_invalid.png) right/contain no-repeat;
+}

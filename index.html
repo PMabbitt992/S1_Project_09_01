@@ -20,6 +20,7 @@
     <title>CGIP Registration Form</title>
     <link href="cg_base.css" rel="stylesheet" />
     <link href="cg_styles.css" rel="stylesheet" />
+    <link href="cg_forms.css" rel="stylesheet" />
     <link href="cg_validate.css" rel="stylesheet" />
     <script src="cg_script.js"></script>
 
@@ -27,7 +28,7 @@
 
 <body>
     <header>
-        <img src=" cg_logo.png" alt="Computer Graphics and Image Processing" id="logoimg" />
+        <img src="cg_logo.png" alt="Computer Graphics and Image Processing" id="logoimg" />
     </header>
     <nav>
         <ul>
@@ -52,44 +53,61 @@
         </ul>
     </nav>
     <section>
+        <!-- a web form that will deliver information to http://www.example.com/cg/register through a data packet seperate from the website url  -->
         <form action="http://www.example.com/cg/register" method="POST">
             <h1>Conference Registration Form</h1>
             <p>Required Item (*)</p>
 
-            <label for="title">Title</label>
-            <input name="title" id="titleBOx" type="text">
-            <datalist>
-                <option></option>
-                <option></option>
-                <option></option>
-                <option></option>
-                <option></option>
-                <option></option>
-                <option></option>
-                <option></option>
+            <!-- form control for the title of the customer using filling out the form. When something is typed, a suggestion of different titles will appear -->
+            <label for="titleBox">Title</label>
+            <input name="title" id="titleBox" type="text" list="titleList" />
+            <datalist id="titleList">
+                <option value="Mr." />
+                <option value="Mrs." />
+                <option value="Ms." />
+                <option value="Prof." />
+                <option value="Dr." />
+                <option value="Assist Prof." />
+                <option value="Assoc Prof." />
             </datalist>
 
-            <label for="firstName">First Name*</label>
+            <!-- Each input box has a label that contains the shown text and then a tag for the actual controlnwith attributes to link the label and identify the input. Some inputs are also required so the form will not be submitted without them-->
+            <label for="fnBox">First Name*</label>
             <input name="firstName" id="fnBox" type="text" required>
 
-            <label for="lastName">Last Name*</label>
+            <label for="lnBox">Last Name*</label>
             <input name="lastName" id="lnBox" type="text" required>
 
-            <label for="address">Address*</label>
+            <label for="addBox">Address*</label>
             <input name="address" id="addBox" type="text" required>
 
-            <label for="group">Company or University</label>
+            <label for="groupBox">Company or University</label>
             <input name="group" id="groupBox" type="text">
 
-            <label for="email">Email*</label>
+            <label for="mailBox">Email*</label>
             <input name="email" id="mailBox" type="email" required>
 
-            <label for="phoneNumber">Phone Number*</label>
-            <input name="phoneNumber" id="phoneBox" type="tel" required>
+            <!-- This input contains a pattern so the information is in the correct format-->
+            <label for="phoneBox">Phone Number*</label>
+            <input name="phoneNumber" id="phoneBox" type="tel" required placeholder="(nnn) nnn-nnnn" pattern="^\d{10}$|^(\(\d{3}\)\s*)?\d{3}[\s-]?\d{4}$">
 
-            <label for="acgipID">ACGIP Membership Number</label>
-            <input name="acgipID" id="idBox" type="text">
+            <label for="idBox">ACGIP Membership Number</label>
+            <input name="acgipID" id="idBox" type="text" placeholder="acgip-nnnnnn" pattern="acgip\-\d{6}$">
 
+            <!-- form control for the registration category where the user is given 5 options to choose from -->
+            <label for="regList">Registration Category</label>
+            <select id="regList">
+                <option value="memeber">ACGIP Member ($695)</option>
+                <option value="nonmember">Non-Member ($795)</option>
+                <option value="student">Student ($310)</option>
+                <option value="poster">Poster ($95)</option>
+                <option value="guest">Guest ($35)</option>
+            </select>
+
+            <!-- Button to submit the form -->
+            <p>
+                <input type="submit" value="Continue">
+            </p>
         </form>
 
     </section>
